@@ -33,7 +33,6 @@ using System.Collections;
 
 public class CameraShake : MonoBehaviour
 {
-
     public float shakeDecayStart = 0.002f;
     public float shakeIntensityStart = 0.03f;
 
@@ -83,5 +82,4 @@ public class CameraShake : MonoBehaviour
         shakeDecay = shakeDecayStart;
         shakeIntensity = shakeIntensityStart;
     }
-
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour {
-
+public class SpawnEnemy : MonoBehaviour
+{
     public GameObject[] waypoints;
     public GameObject testEnemyPrefab;
     public GameObject testEnemyPrefab2;
