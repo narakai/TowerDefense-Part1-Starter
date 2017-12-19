@@ -29,6 +29,21 @@ public class MoveEnemy : MonoBehaviour
         sprite.transform.rotation = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
     }
 
+    public float DistanceToGoal()
+    {
+        float distance = 0;
+        distance += Vector2.Distance(
+            gameObject.transform.position,
+            waypoints[currentWaypoint + 1].transform.position);
+        for (int i = currentWaypoint + 1; i < waypoints.Length - 1; i++)
+        {
+            Vector3 startPosition = waypoints[i].transform.position;
+            Vector3 endPosition = waypoints[i + 1].transform.position;
+            distance += Vector2.Distance(startPosition, endPosition);
+        }
+        return distance;
+    }
+
     private void Update()
     {
         // 1 
@@ -56,7 +71,9 @@ public class MoveEnemy : MonoBehaviour
 
                 AudioSource audioSource = gameObject.GetComponent<AudioSource>();
                 AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-                // TODO: deduct health
+                GameManagerBehavior gameManager =
+                    GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
+                gameManager.Health -= 1;
             }
         }
     }
